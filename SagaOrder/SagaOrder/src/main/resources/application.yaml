@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saga_order
+    username: postgres
+    password: Welcome@123
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        globally_quoted_identifiers: true
+    hibernate:
+      ddl-auto: update
+  cloud:
+    stream:
+      function:
+        definition: orderSupplier;paymentEventConsumer
+      bindings:
+        orderSupplier-out-0:
+          destination: order-event
+        paymentEventConsumer-in-0:
+          destination: payment-event

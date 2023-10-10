@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saga_payment
+    username: postgres
+    password: Welcome@123
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        globally_quoted_identifiers: true
+    hibernate:
+      ddl-auto: update
+  cloud:
+    stream:
+      function:
+        definition: paymentProcessor
+      bindings:
+        paymentProcessor-in-0:
+          destination: order-event
+        paymentProcessor-out-0:
+          destination: payment-event
