@@ -4,6 +4,7 @@ import com.example.sagaPayment.common.OrderStatus;
 import com.example.sagaPayment.event.OrderEvent;
 import com.example.sagaPayment.event.PaymentEvent;
 import com.example.sagaPayment.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 @Configuration
+@Slf4j
 public class PaymentConsumerConfig {
 
     @Autowired
@@ -21,6 +23,7 @@ public class PaymentConsumerConfig {
 
     @Bean
     public Function<Flux<OrderEvent>, Flux<PaymentEvent>> paymentProcessor(){
+        log.info("Received ORDER EVENT: ");
         return orderEventFlux -> orderEventFlux.flatMap(this::processPayment);
     }
 

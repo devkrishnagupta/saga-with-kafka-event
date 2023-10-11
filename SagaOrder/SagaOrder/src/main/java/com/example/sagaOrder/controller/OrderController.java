@@ -4,10 +4,7 @@ import com.example.sagaOrder.dtos.OrderRequestDto;
 import com.example.sagaOrder.entities.Order;
 import com.example.sagaOrder.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public Order createOrder(OrderRequestDto orderRequestDto){
+    public Order createOrder(@RequestBody OrderRequestDto orderRequestDto){
         return this.orderService.create(orderRequestDto);
     }
 

@@ -1,18 +1,19 @@
 package com.example.sagaPayment.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "transactions")
 @Data
+//@IdClass(UserTransactionKey.class)
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserTransaction {
 
+    @Id
     private Integer orderId;
     private Integer userId;
     private Integer amount;

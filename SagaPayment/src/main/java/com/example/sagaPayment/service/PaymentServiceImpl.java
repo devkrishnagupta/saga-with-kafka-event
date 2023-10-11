@@ -9,8 +9,8 @@ import com.example.sagaPayment.event.OrderEvent;
 import com.example.sagaPayment.event.PaymentEvent;
 import com.example.sagaPayment.repository.UserBalanceRepository;
 import com.example.sagaPayment.repository.UserTransactionRepository;
-import jakarta.annotation.PostConstruct;
-import jakarta.transaction.Transactional;
+import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private UserTransactionRepository userTransactionRepository;
 
-    @PostConstruct
+//    @PostConstruct
     public void init(){
         userBalanceRepository.saveAll(
                 Stream.of(

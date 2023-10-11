@@ -6,11 +6,12 @@ import com.example.sagaOrder.dtos.OrderRequestDto;
 import com.example.sagaOrder.entities.Order;
 import com.example.sagaOrder.repository.OrderRepository;
 import com.example.sagaOrder.service.OrderPublisher;
-import jakarta.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+import javax.transaction.Transactional;
 import java.util.function.Consumer;
 
 @Configuration
